@@ -1,0 +1,18 @@
+version: '3.0'
+services:
+  docker-mysql:
+    image: mysql
+    restart: always
+    container_name: mysql-harish
+    ports:
+      - 6666:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: telusko
+      MYSQL_ROOT_HOSTS: '%'
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - mysqldb:/var/lib/mysql
+
+volumes:
+  mysqldb:
